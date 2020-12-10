@@ -32,4 +32,4 @@ bot.command("emoji", countsModule);
 bot.on("message", emojiTrackerModule);
 
 bot.telegram.setWebhook(process.env.WEBHOOK_URL);
-bot.startWebhook("/webhook", null, 3000);
+bot.startWebhook("/webhook", null, process.env.PORT);
