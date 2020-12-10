@@ -1,4 +1,6 @@
-require("dotenv").config();
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 const redditModule = require("./modules/reddit-meme-getter");
 const complimenterModule = require("./modules/complimenter");
 const bModule = require("./modules/b");
