@@ -8,8 +8,6 @@ const isLowercaseLetter = (char) => {
   return charCode >= 97 && charCode < 97 + 26;
 };
 
-const isLetter = (char) => isUppercaseLetter(char) || isLowercaseLetter(char);
-
 module.exports = (ctx) => {
   const arg = ctx.message.text.substr(3);
   // Consider Y to be always a vowel, for simplicity
