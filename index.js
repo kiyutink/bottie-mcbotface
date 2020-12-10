@@ -15,7 +15,7 @@ bot.help((ctx) =>
   ctx.reply(`
 Supported commands:
 /help - Print this text
-/meme - Send random meme from /r/me_irl
+/meme - Send a random meme from /r/me_irl
 /compliment - Send a random compliment
 /emoji - Display 10 most used emoji for current chat
 /b [text] - 🅱️eautify text

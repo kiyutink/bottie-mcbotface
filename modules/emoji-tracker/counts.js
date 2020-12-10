@@ -2,7 +2,6 @@ const { prop, sortBy } = require("ramda");
 const firestore = require("../../lib/firestore");
 
 module.exports = async (ctx) => {
-  console.log(ctx);
   const chatId = ctx.update.message.chat.id;
   const emojiUsagesDocRef = firestore
     .collection("emojiUsages")
