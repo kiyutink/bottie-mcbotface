@@ -1,6 +1,5 @@
 const got = require("got");
-
-const base64 = (str) => Buffer.from(str).toString("base64");
+const { base64 } = require("../../lib/helpers");
 
 const getRedditAccessToken = (() => {
   let lastIssuedToken = null;
@@ -14,7 +13,6 @@ const getRedditAccessToken = (() => {
     ) {
       return lastIssuedToken;
     }
-    
 
     const { body } = await got.post(
       "https://www.reddit.com/api/v1/access_token",
@@ -27,7 +25,7 @@ const getRedditAccessToken = (() => {
         form: {
           grant_type: "client_credentials",
         },
-        responseType: "json"
+        responseType: "json",
       }
     );
     lastIssuedToken = body.access_token;

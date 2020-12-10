@@ -29,4 +29,5 @@ bot.command("d", dModule);
 bot.command("emoji", countsModule);
 bot.on("message", emojiTrackerModule);
 
-bot.launch();
+bot.telegram.setWebhook(process.env.WEBHOOK_URL);
+bot.startWebhook("/webhook", null, 3000);
