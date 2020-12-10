@@ -24,12 +24,15 @@ Supported commands:
 /d [text] - Ededy doddodadd id d
 `)
 );
-bot.command("meme", redditModule);
-bot.command("compliment", complimenterModule);
-bot.command("b", bModule);
-bot.command("d", dModule);
-bot.command("emoji", countsModule);
-bot.on("message", emojiTrackerModule);
+
+[
+  redditModule,
+  complimenterModule,
+  bModule,
+  dModule,
+  emojiTrackerModule,
+  countsModule,
+].forEach((mw) => mw(bot));
 
 bot.telegram.setWebhook(process.env.WEBHOOK_URL);
 bot.startWebhook("/webhook", null, process.env.PORT);

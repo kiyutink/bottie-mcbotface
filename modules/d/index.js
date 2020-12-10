@@ -8,28 +8,31 @@ const isLowercaseLetter = (char) => {
   return charCode >= 97 && charCode < 97 + 26;
 };
 
-module.exports = (ctx) => {
-  const arg = ctx.message.text.substr(3);
-  // Consider Y to be always a vowel, for simplicity
-  const vowelRegex = /[aeiouy]/gi;
+module.exports = (bot) => {
+  bot.command("d", (ctx, next) => {
+    const arg = ctx.message.text.substr(3);
+    // Consider Y to be always a vowel, for simplicity
+    const vowelRegex = /[aeiouy]/gi;
 
-  const response = arg.split("").reduce((res, char) => {
-    if (vowelRegex.test(char)) {
-      return res + char;
+    const response = arg.split("").reduce((res, char) => {
+      if (vowelRegex.test(char)) {
+        return res + char;
+      } else {
+        if (isUppercaseLetter(char)) {
+          return res + "D";
+        }
+        if (isLowercaseLetter(char)) {
+          return res + "d";
+        }
+        return res + char;
+      }
+    }, "");
+
+    if (response.length <= 0) {
+      ctx.reply("You have to provide a message that i can D");
     } else {
-      if (isUppercaseLetter(char)) {
-        return res + "D";
-      }
-      if (isLowercaseLetter(char)) {
-        return res + "d";
-      }
-      return res + char;
+      ctx.reply(response);
     }
-  }, "");
-
-  if (response.length <= 0) {
-    ctx.reply("You have to provide a message that i can D");
-  } else {
-    ctx.reply(response);
-  }
+    next();
+  });
 };
